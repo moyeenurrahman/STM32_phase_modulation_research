@@ -1,0 +1,55 @@
+Running N6 against N1 floor with snr_method_a.py shows:
+
+SNR - Method A   |   N3 - congigB
+==============================================================
+Records averaged   : 8
+Points per record  : 2000
+Sample rate        : 312.50 kSa/s
+Record duration    : 6.400 ms
+Bin width          : 156.25 Hz
+Nyquist            : 156.2 kHz
+  Note: wideband limit reduced to 148 kHz (Nyquist is 156 kHz).
+
+Signal mode        : BPSK   (NOT IEEE 1241 SNR)
+Signal band        : 1250 - 8750 Hz (from measured B99%)
+  harmonics NOT excluded - they cannot be separated from
+  modulation products, so they are counted as noise
+Strongest line     : 4843.7 Hz (offset -156.3 Hz from the carrier)
+Carrier bin level  : -0.9 dB relative to the strongest line
+
+--------------------------------------------------------------
+RESULTS   *** IN-BAND SNR ONLY - NOT IEEE 1241 SNR ***
+--------------------------------------------------------------
+Band used: 1250 - 8750 Hz. This value is
+meaningless without that band, so quote them together in the
+thesis table. Use it to compare operating conditions against
+each other, not as an absolute figure of merit.
+
+Signal power           : 4.6307e-01 V^2  (680.5 mV rms)
+In-band noise power    : 6.2324e-03 V^2
+Noise bins used        : 272 of 320 (85% of the band)
+Outlier bins dropped   : 63 (possible missed spurs)
+
+In-band SNR  (0.1-50 kHz) :   18.71 dB
+  robust variant                :   35.86 dB
+Wideband SNR (0.1-148 kHz):   19.24 dB
+SFDR                            :   20.49 dB (worst spur at 1.25 kHz)
+Image at 95 kHz            :  -41.98 dBc
+Image at 105 kHz            :  -42.80 dBc
+
+--------------------------------------------------------------
+INSTRUMENT LIMIT CHECK
+--------------------------------------------------------------
+Floor records averaged : 32
+Floor noise power      : 1.5422e-05 V^2
+Measured noise is      : +26.07 dB above the floor
+Scope's own SNR limit  : 44.78 dB (the best this setup could ever show)
+
+  VERDICT: MEASURED VALUE
+  Floor-subtracted estimate: 18.72 dB
+  (supporting remark only - state the subtraction in the text)
+
+  Report as: SNR = 18.7 dB
+==============================================================
+Saved psd_N6.png
+Saved images_N6.png

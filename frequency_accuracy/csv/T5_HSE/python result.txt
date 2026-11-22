@@ -1,0 +1,66 @@
+Running the plot_drift.py shows:
+
+48 CSV file(s)
+
+No duplicate files. Every capture is distinct.
+
+--- HSI ---
+  captures        : 24 over 31.0 minutes
+  settled value   : 5016.3822 Hz (+3276.4 ppm from target)
+  drift at t = 0  : -148.40 ppm
+  total excursion : 312.85 ppm
+  settling time   : not settled within 5 ppm during the run
+
+--- HSE ---
+  captures        : 24 over 31.5 minutes
+  settled value   : 5000.2798 Hz (+56.0 ppm from target)
+  drift at t = 0  : -13.98 ppm
+  total excursion : 54.84 ppm
+  settling time   : 1710 s (28.5 min) to stay inside 5 ppm
+
+Table written to .\T5_drift_results.csv
+Plots written to T5_warmup_drift.png and .pdf
+
+Process finished with exit code 0
+
+
+
+
+Running the analyse_stability.py shows:
+
+--- HSE ---
+  captures                 : 24 over 31.5 min
+  scatter, 1 sigma         :    17.91 ppm
+  peak to peak             :    54.84 ppm
+  short-term stability     :    15.89 ppm  (Allan dev, consecutive pairs)
+  trend                    :   +0.200 ppm/min +/- 0.375
+  trend significance       : t = +0.53, p = 0.599  -> not significant
+  upper bound on total drift: |drift| < 24 ppm over 32 min (95 % confidence)
+
+--- HSI ---
+  captures                 : 24 over 31.0 min
+  scatter, 1 sigma         :    86.12 ppm
+  peak to peak             :   312.85 ppm
+  short-term stability     :    80.64 ppm  (Allan dev, consecutive pairs)
+  trend                    :   -1.974 ppm/min +/- 1.762
+  trend significance       : t = -1.12, p = 0.275  -> not significant
+  upper bound on total drift: |drift| < 109 ppm over 31 min (95 % confidence)
+
+--- HSI compared with HSE ---
+  scatter ratio            : 4.8x (variance ratio F = 23.1)
+  HSI is 5 times less stable than the crystal reference.
+
+--- separating oscillator from instrument ---
+  HSE scatter              :    17.91 ppm
+    estimator contribution :     1.10 ppm
+    remaining, capture to
+    capture instrumental   :    17.87 ppm
+    A quartz crystal cannot wander this much in minutes, so
+    this is taken as the measurement floor.
+
+  HSI scatter              :    86.12 ppm
+    minus the floor above  :    84.23 ppm
+    This is the intrinsic short-term instability of the RC
+    oscillator, over and above the measurement floor.
+
+Process finished with exit code 0

@@ -1,0 +1,59 @@
+Running N4 against N1 floor with snr_method_a.py shows:
+
+SNR - Method A   |   N4 - PM, kp=1.0
+==============================================================
+Records averaged   : 8
+Points per record  : 2000
+Sample rate        : 312.50 kSa/s
+Record duration    : 6.400 ms
+Bin width          : 156.25 Hz
+Nyquist            : 156.2 kHz
+  Note: wideband limit reduced to 148 kHz (Nyquist is 156 kHz).
+
+Signal mode        : PM   (NOT IEEE 1241 SNR)
+Signal band        : 3500 - 6500 Hz (kp=1, fm=500 Hz)
+  strict Carson    : 4000 - 6000 Hz (B = 2(kp+1)fm = 2000 Hz)
+  band used is wider, per the methodology document
+  harmonics NOT excluded - they cannot be separated from
+  modulation products, so they are counted as noise
+Strongest line     : 5000.0 Hz (offset -0.0 Hz from the carrier)
+Carrier bin level  : +0.0 dB relative to the strongest line
+
+--------------------------------------------------------------
+RESULTS   *** IN-BAND SNR ONLY - NOT IEEE 1241 SNR ***
+--------------------------------------------------------------
+Band used: 3500 - 6500 Hz. This value is
+meaningless without that band, so quote them together in the
+thesis table. Use it to compare operating conditions against
+each other, not as an absolute figure of merit.
+
+Signal power           : 4.6762e-01 V^2  (683.8 mV rms)
+In-band noise power    : 2.8296e-04 V^2
+Noise bins used        : 301 of 320 (94% of the band)
+Outlier bins dropped   : 12 (possible missed spurs)
+
+In-band SNR  (0.1-50 kHz) :   32.18 dB
+  robust variant                :   38.82 dB
+Wideband SNR (0.1-148 kHz):   29.94 dB
+SFDR                            :   32.59 dB (worst spur at 3.44 kHz)
+Image at 95 kHz            :  -42.93 dBc
+Image at 105 kHz            :  -44.10 dBc
+
+--------------------------------------------------------------
+INSTRUMENT LIMIT CHECK
+--------------------------------------------------------------
+Floor records averaged : 32
+Floor noise power      : 1.5422e-05 V^2
+Measured noise is      : +12.64 dB above the floor
+Scope's own SNR limit  : 44.82 dB (the best this setup could ever show)
+
+  VERDICT: MEASURED VALUE
+  Floor-subtracted estimate: 32.43 dB
+  (supporting remark only - state the subtraction in the text)
+
+  Report as: SNR = 32.2 dB
+==============================================================
+Saved psd_N4.png
+Saved images_N4.png
+
+Process finished with exit code 0

@@ -1,0 +1,71 @@
+Running N3 with snr_method_b_sinad.py shows:
+
+SINAD / ENOB - Method B   |   N3 - LPF output
+==============================================================
+  1.csv             f0 =  5015.663 Hz   A = 0.9671 V   SINAD =  32.43 dB
+  10.csv            f0 =  5016.275 Hz   A = 0.9673 V   SINAD =  32.33 dB
+  11.csv            f0 =  5016.965 Hz   A = 0.9670 V   SINAD =  32.23 dB
+  12.csv            f0 =  5016.241 Hz   A = 0.9659 V   SINAD =  32.38 dB
+  13.csv            f0 =  5016.323 Hz   A = 0.9656 V   SINAD =  32.30 dB
+  14.csv            f0 =  5016.042 Hz   A = 0.9663 V   SINAD =  32.43 dB
+  15.csv            f0 =  5017.039 Hz   A = 0.9670 V   SINAD =  32.37 dB
+  16.csv            f0 =  5015.964 Hz   A = 0.9675 V   SINAD =  32.17 dB
+  17.csv            f0 =  5017.314 Hz   A = 0.9670 V   SINAD =  32.19 dB
+  18.csv            f0 =  5016.638 Hz   A = 0.9678 V   SINAD =  32.33 dB
+  19.csv            f0 =  5015.904 Hz   A = 0.9675 V   SINAD =  32.40 dB
+  2.csv             f0 =  5015.350 Hz   A = 0.9670 V   SINAD =  32.06 dB
+  20.csv            f0 =  5015.798 Hz   A = 0.9680 V   SINAD =  32.39 dB
+  21.csv            f0 =  5016.958 Hz   A = 0.9681 V   SINAD =  32.24 dB
+  22.csv            f0 =  5016.754 Hz   A = 0.9671 V   SINAD =  32.52 dB
+  23.csv            f0 =  5016.139 Hz   A = 0.9667 V   SINAD =  32.58 dB
+  24.csv            f0 =  5015.348 Hz   A = 0.9680 V   SINAD =  32.37 dB
+  25.csv            f0 =  5015.391 Hz   A = 0.9679 V   SINAD =  32.27 dB
+  26.csv            f0 =  5016.586 Hz   A = 0.9689 V   SINAD =  32.24 dB
+  27.csv            f0 =  5016.840 Hz   A = 0.9668 V   SINAD =  32.34 dB
+  28.csv            f0 =  5016.153 Hz   A = 0.9676 V   SINAD =  32.23 dB
+  29.csv            f0 =  5016.067 Hz   A = 0.9682 V   SINAD =  32.43 dB
+  3.csv             f0 =  5015.350 Hz   A = 0.9670 V   SINAD =  32.06 dB
+  30.csv            f0 =  5015.754 Hz   A = 0.9680 V   SINAD =  32.41 dB
+  31.csv            f0 =  5015.932 Hz   A = 0.9681 V   SINAD =  32.27 dB
+  32.csv            f0 =  5015.855 Hz   A = 0.9681 V   SINAD =  32.31 dB
+  4.csv             f0 =  5015.875 Hz   A = 0.9670 V   SINAD =  32.24 dB
+  5.csv             f0 =  5016.247 Hz   A = 0.9668 V   SINAD =  32.17 dB
+  6.csv             f0 =  5015.875 Hz   A = 0.9670 V   SINAD =  32.24 dB
+  7.csv             f0 =  5016.173 Hz   A = 0.9668 V   SINAD =  32.40 dB
+  8.csv             f0 =  5016.801 Hz   A = 0.9668 V   SINAD =  32.53 dB
+  9.csv             f0 =  5016.377 Hz   A = 0.9676 V   SINAD =  32.47 dB
+
+--------------------------------------------------------------
+RESULTS
+--------------------------------------------------------------
+Records analysed   : 32
+Fitted frequency   : 5016.187 Hz  (std 0.520 Hz)
+  offset from 5 kHz: +16.187 Hz  (+3237 ppm)
+Fitted amplitude   : 0.9673 V  (std 0.69 mV)
+Amplitude correction: 4.64 dB (2400 of 4096 codes used)
+
+SINAD              : 32.32 dB  (std 0.12 dB)
+ENOB               : 5.85 bits  (std 0.02)
+
+--------------------------------------------------------------
+CHECKS
+--------------------------------------------------------------
+Residual at the carrier is 3.8 dB above the residual median.
+  Residual looks like noise. Fit accepted.
+
+Cross-checks to do by hand:
+  1. Compare the fitted frequency (5016.187 Hz) with your
+     output frequency accuracy result. These are independent
+     measurements of the same quantity and should agree.
+  2. SINAD will come out LOWER than the Method A in-band SNR, for
+     two reasons: it includes harmonic distortion, and it is measured
+     over the whole captured bandwidth rather than only 0.1-50 kHz.
+     At 400 kSa/s that bandwidth difference alone is about 6 dB.
+     If SINAD comes out HIGHER, something is wrong in one analysis.
+  3. With an 8-bit scope, expect ENOB near 7, not 11. You are
+     measuring the instrument, not the DAC.
+==============================================================
+Saved sinefit_N3.png
+Saved residual_spectrum_N3.png
+
+Process finished with exit code 0

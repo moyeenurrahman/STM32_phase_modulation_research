@@ -1,0 +1,17 @@
+6 CSV file(s) found
+
+T4_HSE_8MHz_run1.csv                      8000000 Hz      +73.85 ppm  [D]
+T4_HSE_8MHz_run2.csv                      8000000 Hz      +69.53 ppm  [D]
+T4_HSE_8MHz_run3.csv                      8000000 Hz      +69.16 ppm  [D]
+T4_HSI_8MHz_run1.csv                      8000000 Hz    +3107.89 ppm  [D]
+T4_HSI_8MHz_run2.csv                      8000000 Hz    +3107.89 ppm  [D]
+T4_HSI_8MHz_run3.csv                      8000000 Hz    +2925.95 ppm  [D]
+
+Written to .\frequency_results.csv
+
+--- Grouped by test, clock and frequency ---
+ test  clock      f_set  runs     mean ppm    1 sigma
+   T4    HSE    8000000     3       +70.84       2.61
+   T4    HSI    8000000     3     +3047.24     105.05
+
+Process finished with exit code 0

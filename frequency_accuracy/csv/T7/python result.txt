@@ -1,0 +1,52 @@
+Target frequency: 5000.000 Hz
+(2 channels found in this file)
+
+--- T7.csv   (channel 1) ---
+  points          : 2000
+  sample interval : 8000.0 ns  (from header)
+  scope rate      : 125.00 kSa/s
+  Vpp             : 1.872 V
+  method          : D, zero-crossing regression
+  record span     : 15.40 ms, 78 cycles
+  frequency       : 5000.1802 Hz
+  ERROR           : +36.05 ppm
+  crossing jitter : 89 ns
+  estimator 1 sigma: 2.227 ppm
+  status          : OK  (clean)
+
+--- T7.csv   (channel 2) ---
+  points          : 2000
+  sample interval : 8000.0 ns  (from header)
+  scope rate      : 125.00 kSa/s
+  Vpp             : 1.968 V
+  method          : D, zero-crossing regression
+  record span     : 15.40 ms, 78 cycles
+  frequency       : 5000.0011 Hz
+  ERROR           : +0.22 ppm
+  crossing jitter : 129 ns
+  estimator 1 sigma: 3.240 ppm (NOT VALID - see below)
+  >> SAMPLE-AND-HOLD WAVEFORM (raw DAC).
+     The staircase sits on one code for a full DAC period
+     at each zero crossing, so the crossings snap to the
+     scope sample grid. The quoted sigma is far too
+     optimistic; the true uncertainty is tens of ppm.
+     Use the filtered channel for the reported result.
+  status          : OK  (clean)
+
+=== T7 verdict ===
+  CH1 (filtered) : +36.05 ppm  (1 sigma 2.227)
+  CH2 (raw DAC)  : +0.22 ppm  (1 sigma 3.240)
+  difference     : +35.83 ppm
+  tolerance      : +/- 60 ppm (set by the staircase channel)
+  PASS - the two channels agree within the uncertainty of
+         the noisier one, so no evidence that the filter
+         shifts the frequency.
+
+  Note: the raw DAC channel is expected to show larger
+  crossing jitter. At 20 samples per carrier cycle the DAC
+  sits exactly on mid-code (2048) for one full sample period
+  at each zero crossing, so the crossing instant is uncertain
+  by up to one 10 us hold. This is why the filtered channel is
+  the one reported.
+
+Process finished with exit code 0

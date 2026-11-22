@@ -1,0 +1,51 @@
+# M1 sweep manifest -- one capture per line: "kp  filename"
+#
+# EDIT THIS FILE before running m1_sweep_summary.py:
+#   1. Fix any filename that doesn't match what you actually saved.
+#   2. Delete any row you did not actually capture (e.g. if you only
+#      took 2 repeats per point instead of 3, delete the r3 lines).
+#   3. Add rows if you captured extra repeats beyond what's listed.
+#
+# Row 1 below is confirmed correct (validated earlier with
+# check_m1_point.py). Every other row is a placeholder using the
+# m1_kp<X>p<XX>_r<N>.csv convention -- verify each one.
+
+0.25  TEK00000.CSV
+0.25  m1_kp0p25_r2.csv
+0.25  m1_kp0p25_r3.csv
+
+0.50  m1_kp0p50_r1.csv
+0.50  m1_kp0p50_r2.csv
+0.50  m1_kp0p50_r3.csv
+
+0.75  m1_kp0p75_r1.csv
+0.75  m1_kp0p75_r2.csv
+0.75  m1_kp0p75_r3.csv
+
+1.00  m1_kp1p00_r1.csv
+1.00  m1_kp1p00_r2.csv
+1.00  m1_kp1p00_r3.csv
+
+1.50  m1_kp1p50_r1.csv
+1.50  m1_kp1p50_r2.csv
+1.50  m1_kp1p50_r3.csv
+
+2.00  m1_kp2p00_r1.csv
+2.00  m1_kp2p00_r2.csv
+2.00  m1_kp2p00_r3.csv
+
+2.50  m1_kp2p50_r1.csv
+2.50  m1_kp2p50_r2.csv
+2.50  m1_kp2p50_r3.csv
+
+3.00  m1_kp3p00_r1.csv
+3.00  m1_kp3p00_r2.csv
+3.00  m1_kp3p00_r3.csv
+
+3.50  m1_kp3p50_r1.csv
+3.50  m1_kp3p50_r2.csv
+3.50  m1_kp3p50_r3.csv
+
+4.00  m1_kp4p00_r1.csv
+4.00  m1_kp4p00_r2.csv
+4.00  m1_kp4p00_r3.csv

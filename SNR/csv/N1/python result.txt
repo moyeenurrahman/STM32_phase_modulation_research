@@ -1,0 +1,48 @@
+Running N1 floor against N1 with snr_method_a.py shows:
+
+SNR - Method A   |   N1 - instrument noise floor
+==============================================================
+Records averaged   : 64
+Points per record  : 2000
+Sample rate        : 312.50 kSa/s
+Record duration    : 6.400 ms
+Bin width          : 156.25 Hz
+Nyquist            : 156.2 kHz
+  Note: wideband limit reduced to 148 kHz (Nyquist is 156 kHz).
+
+Signal mode        : TONE
+Signal band        : 4219 - 5781 Hz (+/-5 bins)
+Carrier peak found : 5312.5 Hz (offset +312.5 Hz)
+
+--------------------------------------------------------------
+RESULTS   (IEEE Std 1241 SNR - single-tone test signal)
+--------------------------------------------------------------
+Signal power           : 5.4441e-07 V^2  (0.7 mV rms)
+In-band noise power    : 1.5365e-05 V^2
+Noise bins used        : 225 of 320 (70% of the band)
+
+In-band SNR  (0.1-50 kHz) :  -14.51 dB
+  robust variant                :  -14.51 dB
+Wideband SNR (0.1-148 kHz):  -19.06 dB
+SFDR                            :   -1.31 dB (worst spur at 23.75 kHz)
+Image at 95 kHz            :   -1.30 dBc
+Image at 105 kHz            :   -0.46 dBc
+
+--------------------------------------------------------------
+INSTRUMENT LIMIT CHECK
+--------------------------------------------------------------
+Floor records averaged : 64
+Floor noise power      : 1.5422e-05 V^2
+Measured noise is      : -0.02 dB above the floor
+Scope's own SNR limit  : -14.52 dB (the best this setup could ever show)
+
+  VERDICT: LOWER BOUND - instrument limited
+  The oscilloscope noise dominates. The DAC noise is buried.
+  Do NOT report this as a measured value.
+
+  Report as: SNR >= -14.5 dB, measurement limited by oscilloscope resolution
+==============================================================
+Saved psd_N1.png
+Saved images_N1.png
+
+Process finished with exit code 0

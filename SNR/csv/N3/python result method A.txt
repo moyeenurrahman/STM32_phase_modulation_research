@@ -1,0 +1,49 @@
+Running N3 against N1 with snr_method_a.py shows:
+
+SNR - Method A   |   N3 - filtered output
+==============================================================
+Records averaged   : 64
+Points per record  : 2000
+Sample rate        : 312.50 kSa/s
+Record duration    : 6.400 ms
+Bin width          : 156.25 Hz
+Nyquist            : 156.2 kHz
+  Note: wideband limit reduced to 148 kHz (Nyquist is 156 kHz).
+
+Signal mode        : TONE
+Signal band        : 4219 - 5781 Hz (+/-5 bins)
+Carrier peak found : 5000.0 Hz (offset -0.0 Hz)
+
+--------------------------------------------------------------
+RESULTS   (IEEE Std 1241 SNR - single-tone test signal)
+--------------------------------------------------------------
+Signal power           : 4.6779e-01 V^2  (684.0 mV rms)
+In-band noise power    : 6.4331e-05 V^2
+Noise bins used        : 225 of 320 (70% of the band)
+Outlier bins dropped   : 11 (possible missed spurs)
+
+In-band SNR  (0.1-50 kHz) :   38.62 dB
+  robust variant                :   41.09 dB
+Wideband SNR (0.1-148 kHz):   32.40 dB
+SFDR                            :   42.21 dB (worst spur at 95.31 kHz)
+Image at 95 kHz            :  -42.21 dBc
+Image at 105 kHz            :  -43.47 dBc
+
+--------------------------------------------------------------
+INSTRUMENT LIMIT CHECK
+--------------------------------------------------------------
+Floor records averaged : 64
+Floor noise power      : 1.5422e-05 V^2
+Measured noise is      : +6.20 dB above the floor
+Scope's own SNR limit  : 44.82 dB (the best this setup could ever show)
+
+  VERDICT: MEASURED VALUE
+  Floor-subtracted estimate: 39.81 dB
+  (supporting remark only - state the subtraction in the text)
+
+  Report as: SNR = 38.6 dB
+==============================================================
+Saved psd_N3.png
+Saved images_N3.png
+
+Process finished with exit code 0

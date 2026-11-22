@@ -1,0 +1,16 @@
+QPSK constellation recovery and EVM analysis
+==================================================
+Mode                  : passband
+Pulse shape           : nrz
+Files                 : qpsk_mode0_nrz_2p5msdiv_cap1.csv, qpsk_mode0_nrz_2p5msdiv_cap2.csv, qpsk_mode0_nrz_2p5msdiv_cap3.csv
+Carrier estimate      : 1000.4441 Hz
+Symbol rate           : 200.0888 Bd
+Scope sample rate     : 62500.0 Sa/s
+Symbols analysed      : 16
+EVM (RMS)             : 1.636 %
+EVM (peak)            : 3.049 %
+MER                   : 35.72 dB
+Phase error, RMS      : 0.809 deg
+I/Q gain imbalance    : -0.051 dB
+Quadrature error      : -7.613 deg
+Bit errors            : 0 of 32

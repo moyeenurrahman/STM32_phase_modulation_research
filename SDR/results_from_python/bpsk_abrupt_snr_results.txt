@@ -1,0 +1,14 @@
+BPSK software receiver and EVM analysis
+============================================
+Pulse shape           : nrz
+Files                 : 1.csv, 2.csv, 3.csv, 4.csv, 5.csv
+TX pattern            : [np.int64(0), np.int64(1), np.int64(1), np.int64(0), np.int64(1)]
+Carrier estimate      : 5014.9591 Hz
+Symbol rate           : 501.4959 Bd
+Scope sample rate     : 62500.0 Sa/s
+Symbols analysed      : 75
+EVM (RMS)             : 1.972 %
+EVM (peak)            : 3.328 %
+MER                   : 34.10 dB
+Phase error, RMS      : 0.321 deg
+Bit errors            : 0 of 75

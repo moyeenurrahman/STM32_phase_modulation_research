@@ -1,0 +1,38 @@
+18 CSV file(s) found
+
+T2_HSE_10000Hz_run1.csv                     10000 Hz      +44.27 ppm  [D]
+T2_HSE_10000Hz_run2.csv                     10000 Hz     +136.12 ppm  [D]
+T2_HSE_10000Hz_run3.csv                     10000 Hz     +136.12 ppm  [D]
+T2_HSE_1000Hz_run1.csv                       1000 Hz      +63.64 ppm  [D]
+T2_HSE_1000Hz_run2.csv                       1000 Hz      +63.83 ppm  [D]
+T2_HSE_1000Hz_run3.csv                       1000 Hz      +67.92 ppm  [D]
+T2_HSE_2000Hz_run1.csv                       2000 Hz      +62.46 ppm  [D]
+T2_HSE_2000Hz_run2.csv                       2000 Hz      +76.63 ppm  [D]
+T2_HSE_2000Hz_run3.csv                       2000 Hz      +74.65 ppm  [D]
+T2_HSE_5000Hz_run1.csv                       5000 Hz      +89.05 ppm  [D]
+T2_HSE_5000Hz_run2.csv                       5000 Hz      +95.49 ppm  [D]
+T2_HSE_5000Hz_run3.csv                       5000 Hz      +83.03 ppm  [D]
+T3_HSE_5000Hz_run1.csv                       5000 Hz      +87.88 ppm  [D]
+T3_HSE_5000Hz_run2.csv                       5000 Hz      +46.71 ppm  [D]
+T3_HSE_5000Hz_run3.csv                       5000 Hz      +84.83 ppm  [D]
+T3_HSI_5000Hz_run1.csv                       5000 Hz    +3244.53 ppm  [D]
+T3_HSI_5000Hz_run2.csv                       5000 Hz    +3215.08 ppm  [D]
+T3_HSI_5000Hz_run3.csv                       5000 Hz    +3137.02 ppm  [D]
+
+Written to .\frequency_results.csv
+
+--- Grouped by test, clock and frequency ---
+ test  clock      f_set  runs     mean ppm    1 sigma
+   T2    HSE       1000     3       +65.13       2.42
+   T2    HSE       2000     3       +71.24       7.67
+   T2    HSE       5000     3       +89.19       6.23
+   T2    HSE      10000     3      +105.50      53.03
+   T3    HSE       5000     3       +73.14      22.94
+   T3    HSI       5000     3     +3198.87      55.56
+
+HSE consistency across 4 frequencies: spread 40.37 ppm
+  All frequencies agree in sign and magnitude, which is
+  what an error originating in the clock source looks
+  like. The generation chain is consistent.
+
+Process finished with exit code 0

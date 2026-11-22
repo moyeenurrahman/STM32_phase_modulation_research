@@ -1,0 +1,30 @@
+12 CSV file(s) found
+
+T1_HSI_10000Hz_run1.csv                     10000 Hz    +3166.38 ppm  [D]
+T1_HSI_10000Hz_run2.csv                     10000 Hz    +2999.76 ppm  [D]
+T1_HSI_10000Hz_run3.csv                     10000 Hz    +2999.76 ppm  [D]
+T1_HSI_1000Hz_run1.csv                       1000 Hz    +3256.83 ppm  [D]
+T1_HSI_1000Hz_run2.csv                       1000 Hz    +3256.83 ppm  [D]
+T1_HSI_1000Hz_run3.csv                       1000 Hz    +3057.84 ppm  [D]
+T1_HSI_2000Hz_run1.csv                       2000 Hz    +3157.64 ppm  [D]
+T1_HSI_2000Hz_run2.csv                       2000 Hz    +3073.60 ppm  [D]
+T1_HSI_2000Hz_run3.csv                       2000 Hz    +3052.67 ppm  [D]
+T1_HSI_5000Hz_run1.csv                       5000 Hz    +3121.93 ppm  [D]
+T1_HSI_5000Hz_run2.csv                       5000 Hz    +3073.27 ppm  [D]
+T1_HSI_5000Hz_run3.csv                       5000 Hz    +3065.56 ppm  [D]
+
+Written to .\frequency_results.csv
+
+--- Grouped by test, clock and frequency ---
+ test  clock      f_set  runs     mean ppm    1 sigma
+   T1    HSI       1000     3     +3190.50     114.89
+   T1    HSI       2000     3     +3094.64      55.56
+   T1    HSI       5000     3     +3086.92      30.56
+   T1    HSI      10000     3     +3055.30      96.20
+
+HSI consistency across 4 frequencies: spread 135.20 ppm
+  All frequencies agree in sign and magnitude, which is
+  what an error originating in the clock source looks
+  like. The generation chain is consistent.
+
+Process finished with exit code 0

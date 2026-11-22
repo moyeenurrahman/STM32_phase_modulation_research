@@ -1,0 +1,311 @@
+Running the thd_analysis.py with floor=None for T5,T6, T7 shows:
+
+ THD ANALYSIS
+==========================================================================
+
+[T9a] system floor, 500 mV/div, 4 ms/div
+  files: 8
+  floor power at each harmonic frequency (arbitrary units):
+    H2 at   2.0 kHz : 2.1813e-02
+    H3 at   3.0 kHz : 3.0306e-02
+    H4 at   4.0 kHz : 2.3525e-02
+    H5 at   5.0 kHz : 2.6617e-02
+    H6 at   6.0 kHz : 3.0325e-02
+    H7 at   7.0 kHz : 3.2566e-02
+
+[T9b] system floor, 200 mV/div, 4 ms/div
+  files: 3
+  floor power at each harmonic frequency (arbitrary units):
+    H2 at   2.0 kHz : 5.7284e-01
+    H3 at   3.0 kHz : 4.4886e-01
+    H4 at   4.0 kHz : 4.3559e-01
+    H5 at   5.0 kHz : 4.2616e-01
+    H6 at   6.0 kHz : 3.5192e-01
+    H7 at   7.0 kHz : 2.7099e-01
+
+[T9c] system floor, 500 mV/div, 400 us/div, from SNR N1
+  files: 32
+  floor power at each harmonic frequency (arbitrary units):
+    H2 at  10.0 kHz : 1.7928e-01
+    H3 at  15.0 kHz : 1.9862e-01
+    H4 at  20.0 kHz : 1.7576e-01
+    H5 at  25.0 kHz : 2.3963e-01
+    H6 at  30.0 kHz : 1.8035e-01
+    H7 at  35.0 kHz : 1.9039e-01
+
+--------------------------------------------------------------------------
+[FG]  f0 = 1000 Hz, - codes, Point -, 1 runs
+  function generator direct into scope, 1.93 Vpp
+  scope rate 31.3 kSa/s, 2000 samples, bin 15.63 Hz, cycles in record 64.0
+  detected fundamental 1000.00 Hz, Vpp 1.820 V
+  crest factor: positive 1.433, negative 1.431 (pure sine = 1.414)
+  harmonic breakdown (mean over runs):
+    H2    2.00 kHz    -48.62 dBc   measured (1/1 runs)
+    H3    3.00 kHz    -48.89 dBc   measured (1/1 runs)
+    H4    4.00 kHz    -59.10 dBc   at/below floor (0/1 runs)
+    H5    5.00 kHz    -46.89 dBc   measured (1/1 runs)
+    H6    6.00 kHz    -57.59 dBc   at/below floor (0/1 runs)
+    H7    7.00 kHz    -59.67 dBc   at/below floor (0/1 runs)
+  THD_F : 0.7153 %   (-42.91 dB)
+  THD_R : 0.7153 %
+  dominant harmonic : H5
+  NOTE: most harmonics sit at or below the floor. Report THD as an UPPER BOUND.
+
+--------------------------------------------------------------------------
+[T2]  f0 = 1000 Hz, 1200 codes, Point B, 8 runs
+  HEADLINE RESULT
+  scope rate 31.3 kSa/s, 2000 samples, bin 15.63 Hz, cycles in record 64.0
+  detected fundamental 1000.00 Hz, Vpp 1.963 V
+  expected Vpp 1.934 V, measured 1.963 V (+1.47 %)
+  crest factor: positive 1.438, negative 1.430 (pure sine = 1.414)
+  harmonic breakdown (mean over runs):
+    H2    2.00 kHz    -57.65 dBc   at/below floor (2/8 runs)
+    H3    3.00 kHz    -50.26 dBc   measured (8/8 runs)
+    H4    4.00 kHz    -58.92 dBc   at/below floor (1/8 runs)
+    H5    5.00 kHz    -52.02 dBc   measured (8/8 runs)
+    H6    6.00 kHz    -59.53 dBc   at/below floor (1/8 runs)
+    H7    7.00 kHz    -55.47 dBc   measured (5/8 runs)
+  THD_F : 0.4759 %   (-46.45 dB)
+  THD_R : 0.4759 %
+  spread over runs : +/- 0.78 dB (1 sigma, n = 8)
+  dominant harmonic : H3
+    -> symmetric compression, DAC INL curvature or gentle limiting
+  NOTE: most harmonics sit at or below the floor. Report THD as an UPPER BOUND.
+
+--------------------------------------------------------------------------
+[T1]  f0 = 1000 Hz, 1200 codes, Point A, 8 runs
+  raw DAC linearity
+  scope rate 31.3 kSa/s, 2000 samples, bin 15.63 Hz, cycles in record 64.0
+  detected fundamental 1000.00 Hz, Vpp 1.970 V
+  expected Vpp 1.934 V, measured 1.970 V (+1.86 %)
+  crest factor: positive 1.437, negative 1.431 (pure sine = 1.414)
+  harmonic breakdown (mean over runs):
+    H2    2.00 kHz    -56.44 dBc   at/below floor (3/8 runs)
+    H3    3.00 kHz    -50.31 dBc   measured (8/8 runs)
+    H4    4.00 kHz    -52.13 dBc   measured (7/8 runs)
+    H5    5.00 kHz    -54.54 dBc   measured (5/8 runs)
+    H6    6.00 kHz    -51.44 dBc   measured (7/8 runs)
+    H7    7.00 kHz    -55.10 dBc   at/below floor (3/8 runs)
+  THD_F : 0.5613 %   (-45.02 dB)
+  THD_R : 0.5613 %
+  spread over runs : +/- 1.14 dB (1 sigma, n = 8)
+  dominant harmonic : H3
+    -> symmetric compression, DAC INL curvature or gentle limiting
+
+--------------------------------------------------------------------------
+[T5B]  f0 = 1000 Hz, 500 codes, Point B, 3 runs
+  sweep
+  scope rate 31.3 kSa/s, 2000 samples, bin 15.63 Hz, cycles in record 64.0
+  detected fundamental 1000.00 Hz, Vpp 0.824 V
+  expected Vpp 0.806 V, measured 0.824 V (+2.25 %)
+  crest factor: positive 1.454, negative 1.432 (pure sine = 1.414)
+  harmonic breakdown (mean over runs):
+    H2    2.00 kHz    -58.15 dBc   at/below floor (0/3 runs)
+    H3    3.00 kHz    -48.46 dBc   measured (3/3 runs)
+    H4    4.00 kHz    -61.13 dBc   at/below floor (0/3 runs)
+    H5    5.00 kHz    -54.41 dBc   measured (2/3 runs)
+    H6    6.00 kHz    -58.24 dBc   at/below floor (0/3 runs)
+    H7    7.00 kHz    -55.62 dBc   measured (2/3 runs)
+  THD_F : 0.4940 %   (-46.13 dB)
+  THD_R : 0.4940 %
+  spread over runs : +/- 0.84 dB (1 sigma, n = 3)
+  dominant harmonic : H3
+    -> symmetric compression, DAC INL curvature or gentle limiting
+  NOTE: most harmonics sit at or below the floor. Report THD as an UPPER BOUND.
+
+--------------------------------------------------------------------------
+[T6B]  f0 = 1000 Hz, 800 codes, Point B, 3 runs
+  sweep
+  scope rate 31.3 kSa/s, 2000 samples, bin 15.63 Hz, cycles in record 64.0
+  detected fundamental 1000.00 Hz, Vpp 1.309 V
+  expected Vpp 1.289 V, measured 1.309 V (+1.55 %)
+  crest factor: positive 1.429, negative 1.419 (pure sine = 1.414)
+  harmonic breakdown (mean over runs):
+    H2    2.00 kHz    -53.61 dBc   measured (3/3 runs)
+    H3    3.00 kHz    -58.13 dBc   measured (2/3 runs)
+    H4    4.00 kHz    -64.28 dBc   at/below floor (0/3 runs)
+    H5    5.00 kHz    -54.75 dBc   measured (3/3 runs)
+    H6    6.00 kHz    -63.73 dBc   at/below floor (0/3 runs)
+    H7    7.00 kHz    -59.48 dBc   measured (2/3 runs)
+  THD_F : 0.3343 %   (-49.52 dB)
+  THD_R : 0.3343 %
+  spread over runs : +/- 0.28 dB (1 sigma, n = 3)
+  dominant harmonic : H2
+    -> asymmetric distortion, output stage off centre or near a rail
+
+--------------------------------------------------------------------------
+[T7]  f0 = 1000 Hz, 1000 codes, Point B, 3 runs
+  sweep - CHECK Vpp, 200 mV/div may have clipped
+  scope rate 31.3 kSa/s, 2000 samples, bin 15.63 Hz, cycles in record 64.0
+  detected fundamental 1000.00 Hz, Vpp 1.632 V
+  expected Vpp 1.612 V, measured 1.632 V (+1.26 %)
+  crest factor: positive 1.435, negative 1.426 (pure sine = 1.414)
+  harmonic breakdown (mean over runs):
+    H2    2.00 kHz    -49.84 dBc   measured (3/3 runs)
+    H3    3.00 kHz    -64.93 dBc   at/below floor (0/3 runs)
+    H4    4.00 kHz    -61.12 dBc   measured (2/3 runs)
+    H5    5.00 kHz    -63.40 dBc   at/below floor (1/3 runs)
+    H6    6.00 kHz    -60.34 dBc   measured (2/3 runs)
+    H7    7.00 kHz    -56.23 dBc   measured (3/3 runs)
+  THD_F : 0.3901 %   (-48.18 dB)
+  THD_R : 0.3901 %
+  spread over runs : +/- 0.78 dB (1 sigma, n = 3)
+  dominant harmonic : H2
+    -> asymmetric distortion, output stage off centre or near a rail
+
+--------------------------------------------------------------------------
+[T8B]  f0 = 1000 Hz, 1500 codes, Point B, 3 runs
+  flat tops, op-amp input handover, LOWER BOUND
+  scope rate 31.3 kSa/s, 2000 samples, bin 15.63 Hz, cycles in record 64.0
+  detected fundamental 1000.00 Hz, Vpp 2.393 V
+  expected Vpp 2.418 V, measured 2.393 V (-1.00 %)
+  *** WARNING: measured amplitude is more than 1 % below theory.
+      The signal may have run off the oscilloscope screen. Recapture at a coarser volts/div.
+  crest factor: positive 1.406, negative 1.419 (pure sine = 1.414)
+  harmonic breakdown (mean over runs):
+    H2    2.00 kHz    -53.50 dBc   measured (3/3 runs)
+    H3    3.00 kHz    -45.03 dBc   measured (3/3 runs)
+    H4    4.00 kHz    -41.58 dBc   measured (3/3 runs)
+    H5    5.00 kHz    -44.44 dBc   measured (3/3 runs)
+    H6    6.00 kHz    -49.38 dBc   measured (3/3 runs)
+    H7    7.00 kHz    -46.27 dBc   measured (3/3 runs)
+  THD_F : 1.3284 %   (-37.53 dB)
+  THD_R : 1.3283 %
+  spread over runs : +/- 0.08 dB (1 sigma, n = 3)
+  dominant harmonic : H4
+
+--------------------------------------------------------------------------
+[T5A]  f0 = 1000 Hz, 500 codes, Point A, 3 runs
+  sweep
+  scope rate 31.3 kSa/s, 2000 samples, bin 15.63 Hz, cycles in record 64.0
+  detected fundamental 1000.00 Hz, Vpp 0.840 V
+  expected Vpp 0.806 V, measured 0.840 V (+4.24 %)
+  crest factor: positive 1.482, negative 1.463 (pure sine = 1.414)
+  harmonic breakdown (mean over runs):
+    H2    2.00 kHz    -56.10 dBc   at/below floor (0/3 runs)
+    H3    3.00 kHz    -50.36 dBc   measured (2/3 runs)
+    H4    4.00 kHz    -56.56 dBc   at/below floor (0/3 runs)
+    H5    5.00 kHz    -57.41 dBc   at/below floor (0/3 runs)
+    H6    6.00 kHz    -51.65 dBc   measured (2/3 runs)
+    H7    7.00 kHz    -52.08 dBc   measured (3/3 runs)
+  THD_F : 0.5357 %   (-45.42 dB)
+  THD_R : 0.5357 %
+  spread over runs : +/- 1.17 dB (1 sigma, n = 3)
+  dominant harmonic : H3
+    -> symmetric compression, DAC INL curvature or gentle limiting
+  NOTE: most harmonics sit at or below the floor. Report THD as an UPPER BOUND.
+
+--------------------------------------------------------------------------
+[T6A]  f0 = 1000 Hz, 800 codes, Point A, 3 runs
+  sweep
+  scope rate 31.3 kSa/s, 2000 samples, bin 15.63 Hz, cycles in record 64.0
+  detected fundamental 1000.00 Hz, Vpp 1.320 V
+  expected Vpp 1.289 V, measured 1.320 V (+2.38 %)
+  crest factor: positive 1.428, negative 1.453 (pure sine = 1.414)
+  harmonic breakdown (mean over runs):
+    H2    2.00 kHz    -55.67 dBc   at/below floor (1/3 runs)
+    H3    3.00 kHz    -60.51 dBc   at/below floor (0/3 runs)
+    H4    4.00 kHz    -51.67 dBc   measured (3/3 runs)
+    H5    5.00 kHz    -51.57 dBc   measured (3/3 runs)
+    H6    6.00 kHz    -51.41 dBc   measured (3/3 runs)
+    H7    7.00 kHz    -54.62 dBc   measured (3/3 runs)
+  THD_F : 0.5296 %   (-45.52 dB)
+  THD_R : 0.5296 %
+  spread over runs : +/- 0.76 dB (1 sigma, n = 3)
+  dominant harmonic : H6
+
+--------------------------------------------------------------------------
+[T8A]  f0 = 1000 Hz, 1500 codes, Point A, 3 runs
+  clean at Point A - proves the op-amp is the cause
+  scope rate 31.3 kSa/s, 2000 samples, bin 15.63 Hz, cycles in record 64.0
+  detected fundamental 1000.00 Hz, Vpp 2.473 V
+  expected Vpp 2.418 V, measured 2.473 V (+2.31 %)
+  crest factor: positive 1.463, negative 1.445 (pure sine = 1.414)
+  harmonic breakdown (mean over runs):
+    H2    2.00 kHz    -47.21 dBc   measured (3/3 runs)
+    H3    3.00 kHz    -58.79 dBc   at/below floor (0/3 runs)
+    H4    4.00 kHz    -51.80 dBc   measured (3/3 runs)
+    H5    5.00 kHz    -61.47 dBc   at/below floor (0/3 runs)
+    H6    6.00 kHz    -50.91 dBc   measured (3/3 runs)
+    H7    7.00 kHz    -58.54 dBc   at/below floor (0/3 runs)
+  THD_F : 0.6097 %   (-44.30 dB)
+  THD_R : 0.6097 %
+  spread over runs : +/- 0.57 dB (1 sigma, n = 3)
+  dominant harmonic : H2
+    -> asymmetric distortion, output stage off centre or near a rail
+  NOTE: most harmonics sit at or below the floor. Report THD as an UPPER BOUND.
+
+--------------------------------------------------------------------------
+[T3]  f0 = 5000 Hz, 1200 codes, Point A, 32 runs
+  operating point, raw, reused from SNR N2
+  scope rate 312.5 kSa/s, 2000 samples, bin 156.25 Hz, cycles in record 32.0
+  detected fundamental 5000.00 Hz, Vpp 1.977 V
+  expected Vpp 1.934 V, measured 1.977 V (+2.21 %)
+  crest factor: positive 1.460, negative 1.442 (pure sine = 1.414)
+  harmonic breakdown (mean over runs):
+    H2   10.00 kHz    -56.73 dBc   at/below floor (7/32 runs)
+    H3   15.00 kHz    -48.71 dBc   measured (27/32 runs)
+    H4   20.00 kHz    -55.93 dBc   at/below floor (0/32 runs)
+    H5   25.00 kHz    -51.37 dBc   measured (25/32 runs)
+    H6   30.00 kHz    -44.04 dBc   measured (32/32 runs)
+    H7   35.00 kHz    -56.69 dBc   at/below floor (2/32 runs)
+  THD_F : 0.8185 %   (-41.74 dB)
+  THD_R : 0.8185 %
+  spread over runs : +/- 0.53 dB (1 sigma, n = 32)
+  dominant harmonic : H6
+  NOTE: most harmonics sit at or below the floor. Report THD as an UPPER BOUND.
+
+[T4] dropped 2 duplicate file(s): 3.csv, 6.csv
+
+--------------------------------------------------------------------------
+[T4]  f0 = 5000 Hz, 1200 codes, Point B, 30 runs
+  operating point, filter corrected, reused from SNR N3
+  scope rate 312.5 kSa/s, 2000 samples, bin 156.25 Hz, cycles in record 32.0
+  detected fundamental 5000.00 Hz, Vpp 1.970 V
+  expected Vpp 1.934 V, measured 1.970 V (+1.86 %)
+  crest factor: positive 1.433, negative 1.439 (pure sine = 1.414)
+  LPF response de-embedded from every component
+  harmonic breakdown (mean over runs):
+    H2   10.00 kHz    -50.51 dBc   measured (28/30 runs)
+    H3   15.00 kHz    -50.11 dBc   measured (22/30 runs)
+    H4   20.00 kHz    -52.28 dBc   at/below floor (0/30 runs)
+    H5   25.00 kHz    -50.87 dBc   at/below floor (4/30 runs)
+    H6   30.00 kHz    -49.80 dBc   at/below floor (1/30 runs)
+    H7   35.00 kHz    -46.07 dBc   at/below floor (11/30 runs)
+  THD_F : 0.8244 %   (-41.68 dB)
+  THD_R : 0.8243 %
+  spread over runs : +/- 1.09 dB (1 sigma, n = 30)
+  dominant harmonic : H7
+  NOTE: most harmonics sit at or below the floor. Report THD as an UPPER BOUND.
+
+[T3] matched 8-run subset (for fair comparison with the 1 kHz cases): THD = 0.8526 % (-41.38 dB)
+
+[T4] matched 8-run subset (for fair comparison with the 1 kHz cases): THD = 0.8465 % (-41.45 dB)
+
+--------------------------------------------------------------------------
+[T4] filter correction, Table 2
+  THD from raw levels      : 0.5118 % (-45.82 dB)
+  THD after LPF correction : 0.8244 % (-41.68 dB)
+  difference               : +4.14 dB
+
+==========================================================================
+ TABLE 3  --  amplitude sweep, f0 = 1 kHz
+==========================================================================
+case   point  codes  swing (V)      THD %      THD dB    dominant 
+T5B    B      500    1.25 - 2.05    0.4940     -46.13    H3       
+T6B    B      800    1.01 - 2.30    0.3343     -49.52    H2       
+T7     B      1000   0.84 - 2.46    0.3901     -48.18    H2       
+T2     B      1200   0.68 - 2.62    0.4759     -46.45    H3       
+T8B    B      1500   0.44 - 2.86    1.3284     -37.53    H4       
+
+T5A    A      500    1.25 - 2.05    0.5357     -45.42    H3       
+T6A    A      800    1.01 - 2.30    0.5296     -45.52    H6       
+T1     A      1200   0.68 - 2.62    0.5613     -45.02    H3       
+T8A    A      1500   0.44 - 2.86    0.6097     -44.30    H2       
+
+
+Figures written to ./figures
+Numbers written to results_thd.csv
+
+Process finished with exit code 0
+

@@ -1,0 +1,9 @@
+# M3 sweep manifest -- one repeat per line: "ch1_file  ch2_file"
+#
+# Row 1 is confirmed (validated earlier with check_m3_point.py:
+# separation 179.99 deg). Capture 2 more repeats and fill in rows 2-3
+# below before running m3_sweep_summary.py.
+
+TEK00030.CSV  TEK00031.CSV
+m3_ch1_r2.csv  m3_ch2_r2.csv
+m3_ch1_r3.csv  m3_ch2_r3.csv

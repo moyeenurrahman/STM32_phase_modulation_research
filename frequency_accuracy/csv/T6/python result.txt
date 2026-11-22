@@ -1,0 +1,13 @@
+3 CSV file(s) found
+
+T6_HSE_5000Hz_run1.csv                       5000 Hz      +43.99 ppm  [C]
+T6_HSE_5000Hz_run2.csv                       5000 Hz     +102.50 ppm  [C]
+T6_HSE_5000Hz_run3.csv                       5000 Hz      +69.68 ppm  [C]
+
+Written to .\frequency_results.csv
+
+--- Grouped by test, clock and frequency ---
+ test  clock      f_set  runs     mean ppm    1 sigma
+   T6    HSE       5000     3       +72.06      29.32
+
+Process finished with exit code 0
