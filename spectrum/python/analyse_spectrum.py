@@ -43,10 +43,17 @@ from scipy.special import jv
 # CONFIGURATION
 # ======================================================================
 
-DATA_DIR = "."
+_HERE = os.path.dirname(os.path.abspath(__file__))
 
-# Define every case here. 'pattern' is a substring matched against
-# filenames. 'kind' selects which analysis runs.
+# Raw oscilloscope CSV files: spectrum/csv/<case>/1.csv, 2.csv, ...
+DATA_DIR = os.path.join(_HERE, "..", "csv")
+
+# Every plot written by the scripts goes here (created automatically).
+OUT_DIR = os.path.join(_HERE, "..", "reproduced_plots")
+os.makedirs(OUT_DIR, exist_ok=True)
+
+# Define every case here. 'folder' is the sub-folder of DATA_DIR that holds
+# the case's CSV files. 'kind' selects which analysis runs.
 #
 #   kind = "tone"  unmodulated carrier
 #   kind = "pm"    analog phase modulation
@@ -54,20 +61,20 @@ DATA_DIR = "."
 #   kind = "floor" output disabled, instrument noise floor
 #
 CASES = {
-    # ---- Family W (already captured during the SNR session) ----
-    "S1":  dict(pattern="S1",  family="W", kind="tone",  point="A", kp=0.0),
-    "S2":  dict(pattern="S2",  family="W", kind="tone",  point="B", kp=0.0),
-    "S6W": dict(pattern="N6",  family="W", kind="bpsk",  point="B", kp=None),
-    "S8W": dict(pattern="S8W", family="W", kind="floor", point="B", kp=None),
+    # ---- Family W (400 us/div; S1, S2, S6W, S8W were captured in the SNR session) ----
+    "S1":  dict(folder="S1",  family="W", kind="tone",  point="A", kp=0.0),
+    "S2":  dict(folder="S2",  family="W", kind="tone",  point="B", kp=0.0),
+    "S6W": dict(folder="S6W",  family="W", kind="bpsk",  point="B", kp=None),
+    "S8W": dict(folder="S8W", family="W", kind="floor", point="B", kp=None),
 
-    # ---- Family N (to be captured) ----
-    "S2N": dict(pattern="S2N", family="N", kind="tone",  point="B", kp=0.0),
-    "S3":  dict(pattern="S3",  family="N", kind="pm",    point="B", kp=1.0),
-    "S4":  dict(pattern="S4",  family="N", kind="pm",    point="B", kp=2.4048),
-    "S5":  dict(pattern="S5",  family="N", kind="pm",    point="B", kp=3.8317),
-    "S6N": dict(pattern="S6N", family="N", kind="bpsk",  point="B", kp=None),
-    "S7N": dict(pattern="S7N", family="N", kind="bpsk",  point="B", kp=None),
-    "S8N": dict(pattern="S8N", family="N", kind="floor", point="B", kp=None),
+    # ---- Family N (2 ms/div; new captures for the spectral analysis) ----
+    "S2N": dict(folder="S2N", family="N", kind="tone",  point="B", kp=0.0),
+    "S3":  dict(folder="S3",  family="N", kind="pm",    point="B", kp=1.0),
+    "S4":  dict(folder="S4",  family="N", kind="pm",    point="B", kp=2.4048),
+    "S5":  dict(folder="S5",  family="N", kind="pm",    point="B", kp=3.8317),
+    "S6N": dict(folder="S6N", family="N", kind="bpsk",  point="B", kp=None),
+    "S7N": dict(folder="S7N", family="N", kind="bpsk",  point="B", kp=None),
+    "S8N": dict(folder="S8N", family="N", kind="floor", point="B", kp=None),
 }
 
 # Which floor case belongs to which family
@@ -168,9 +175,13 @@ def collect_case(case_id, cfg):
     Load, screen and average every record belonging to one case.
     Returns dict with f, Pxx, n_used, n_dup, n_files, or None.
     """
-    names = sorted(f for f in os.listdir(DATA_DIR)
-                   if cfg["pattern"].lower() in f.lower()
-                   and f.lower().endswith(".csv"))
+    case_dir = os.path.join(DATA_DIR, cfg["folder"])
+    if not os.path.isdir(case_dir):
+        return None
+    # numeric sort so that 10.csv comes after 9.csv
+    names = sorted((f for f in os.listdir(case_dir)
+                    if f.lower().endswith(".csv")),
+                   key=lambda f: (len(f), f))
     if not names:
         return None
 
@@ -178,7 +189,7 @@ def collect_case(case_id, cfg):
 
     seen, kept, n_dup = {}, [], 0
     for n in names:
-        p = os.path.join(DATA_DIR, n)
+        p = os.path.join(case_dir, n)
         h = md5_of(p)
         if h in seen:
             n_dup += 1
@@ -366,7 +377,7 @@ def analyse_family_w(name, res, floor):
         print("  ** No noise floor loaded - suppression cannot be validated **")
 
 
-def analyse_family_n(name, res, floor):
+def analyse_family_n(name, res, floor, ref_carrier_db=None):
     f, P = res["f"], res["Pxx"]
     cfg = res["cfg"]
     kind = cfg["kind"]
@@ -417,8 +428,16 @@ def analyse_family_n(name, res, floor):
                 print(f"  Error             : {err:+.2f} %{flag}")
 
             if abs(kp_cmd - 2.4048) < 0.01:
-                depth = to_db(p_carrier) - to_db(np.median(P))
-                print(f"  Carrier above median floor: {depth:.2f} dB")
+                # Both numbers are carrier-lobe POWER in dB(V^2), so the
+                # comparison is like-for-like (the old version compared a
+                # power with a median PSD in dB(V^2/Hz)).
+                if ref_carrier_db is not None:
+                    print(f"  Carrier null depth vs S2N carrier: "
+                          f"{ref_carrier_db - to_db(p_carrier):.2f} dB")
+                if floor is not None and len(floor["f"]) == len(f):
+                    p_fl = lobe_power(floor["f"], floor["Pxx"], FC)
+                    print(f"  Carrier lobe above floor lobe   : "
+                          f"{to_db(p_carrier) - to_db(p_fl):.2f} dB")
                 print("  (A deep null here is the headline result.)")
 
         # ---------- B99 ----------
@@ -517,8 +536,8 @@ def plot_case(name, res, floor):
     plt.tight_layout()
 
     if SAVE_PLOTS:
-        plt.savefig(f"{name}_psd.png", dpi=PLOT_DPI)
-        plt.savefig(f"{name}_psd.pdf")
+        plt.savefig(os.path.join(OUT_DIR, f"{name}_psd.png"), dpi=PLOT_DPI)
+        plt.savefig(os.path.join(OUT_DIR, f"{name}_psd.pdf"))
     plt.close()
 
 
@@ -549,10 +568,10 @@ def plot_before_after(res_a, res_b, floor):
     plt.legend(fontsize=8)
     plt.tight_layout()
     if SAVE_PLOTS:
-        plt.savefig("FIG_before_after_LPF.png", dpi=PLOT_DPI)
-        plt.savefig("FIG_before_after_LPF.pdf")
+        plt.savefig(os.path.join(OUT_DIR, "before_after_LPF.png"), dpi=PLOT_DPI)
+        plt.savefig(os.path.join(OUT_DIR, "before_after_LPF.pdf"))
     plt.close()
-    print("\nSaved FIG_before_after_LPF.(png|pdf)")
+    print("\nSaved before_after_LPF.(png|pdf)")
 
 
 # ======================================================================
@@ -568,12 +587,12 @@ def main():
     for name, cfg in CASES.items():
         res = collect_case(name, cfg)
         if res is None:
-            print(f"\n[{name}] no usable files matching '{cfg['pattern']}'")
+            print(f"\n[{name}] no usable files in '{cfg['folder']}'")
             continue
         loaded[name] = res
 
     if not loaded:
-        print("\nNothing loaded. Check DATA_DIR and the CASES patterns.")
+        print("\nNothing loaded. Check DATA_DIR and the CASES folders.")
         sys.exit(1)
 
     # ---- file screening summary ----
@@ -593,6 +612,12 @@ def main():
         print("\n  ** Duplicates found. Report the USED count in the thesis,")
         print("     not the number of files on the pendrive. **")
 
+    # Unmodulated carrier level (S2N), the reference for the S4 carrier null.
+    ref_carrier_db = None
+    if "S2N" in loaded:
+        ref_carrier_db = to_db(lobe_power(loaded["S2N"]["f"],
+                                          loaded["S2N"]["Pxx"], FC))
+
     # ---- per-case analysis ----
     for name, r in loaded.items():
         if r["cfg"]["kind"] == "floor":
@@ -610,7 +635,8 @@ def main():
         if fam == "W":
             analyse_family_w(name, r, floor)
         else:
-            analyse_family_n(name, r, floor)
+            analyse_family_n(name, r, floor,
+                            ref_carrier_db=ref_carrier_db)
 
         plot_case(name, r, floor)
 
@@ -628,7 +654,7 @@ def main():
     print("- The image suppression figure already appears in the SNR")
     print("  chapter. Report the number once; use this chapter for the")
     print("  PSD figures.")
-    print("\nPlots written as <case>_psd.(png|pdf)")
+    print(f"\nPlots written to {os.path.abspath(OUT_DIR)}")
 
 
 if __name__ == "__main__":

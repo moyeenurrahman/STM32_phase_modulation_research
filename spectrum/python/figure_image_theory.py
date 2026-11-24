@@ -24,10 +24,12 @@ here confirms the op-amp has lost gain at, say, 30 kHz.
 Requires analyse_spectrum.py and the same CSV files in the same folder.
 """
 
+import os
+
 import numpy as np
 import matplotlib.pyplot as plt
 
-from analyse_spectrum import collect_case, CASES, to_db
+from analyse_spectrum import OUT_DIR, collect_case, CASES, to_db
 
 # ---- filter component values (from the methodology chapter) ----
 R1 = 5600.0            # ohm
@@ -119,9 +121,9 @@ def main():
     plt.grid(True, alpha=0.3)
     plt.legend(fontsize=9)
     plt.tight_layout()
-    plt.savefig("FIG_7_6_image_theory.png", dpi=300)
-    plt.savefig("FIG_7_6_image_theory.pdf")
-    print("\nSaved FIG_7_6_image_theory.(png|pdf)")
+    plt.savefig(os.path.join(OUT_DIR, "image_theory.png"), dpi=300)
+    plt.savefig(os.path.join(OUT_DIR, "image_theory.pdf"))
+    print("\nSaved image_theory.(png|pdf) in reproduced_plots/")
     plt.show()
 
 

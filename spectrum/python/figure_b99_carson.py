@@ -19,10 +19,13 @@ a percentage against a threshold stated only in text.
 Requires analyse_spectrum.py and the same CSV files in the same folder.
 """
 
+import os
+
 import numpy as np
 import matplotlib.pyplot as plt
 
 from analyse_spectrum import (
+    OUT_DIR,
     collect_case, CASES, occupied_bandwidth, B99_LOW, B99_HIGH, FM,
 )
 
@@ -85,9 +88,9 @@ def main():
     ax.legend()
 
     plt.tight_layout()
-    plt.savefig("FIG_7_11_b99_carson.png", dpi=300)
-    plt.savefig("FIG_7_11_b99_carson.pdf")
-    print("\nSaved FIG_7_11_b99_carson.(png|pdf)")
+    plt.savefig(os.path.join(OUT_DIR, "b99_carson.png"), dpi=300)
+    plt.savefig(os.path.join(OUT_DIR, "b99_carson.pdf"))
+    print("\nSaved b99_carson.(png|pdf) in reproduced_plots/")
     plt.show()
 
 

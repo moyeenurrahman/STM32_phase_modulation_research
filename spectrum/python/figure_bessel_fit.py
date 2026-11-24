@@ -24,11 +24,14 @@ within a fraction of a dB.
 Requires analyse_spectrum.py and the same CSV files in the same folder.
 """
 
+import os
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import jv
 
 from analyse_spectrum import (
+    OUT_DIR,
     collect_case, CASES, lobe_amplitude, recover_kp,
     FC, FM, N_SIDEBANDS,
 )
@@ -107,9 +110,9 @@ def main():
     fig.suptitle("Figure 7.10 — Measured sideband amplitudes vs. Bessel prediction",
                  y=1.0)
     plt.tight_layout()
-    plt.savefig("FIG_7_10_bessel_fit.png", dpi=300, bbox_inches="tight")
-    plt.savefig("FIG_7_10_bessel_fit.pdf", bbox_inches="tight")
-    print("\nSaved FIG_7_10_bessel_fit.(png|pdf)")
+    plt.savefig(os.path.join(OUT_DIR, "bessel_fit.png"), dpi=300, bbox_inches="tight")
+    plt.savefig(os.path.join(OUT_DIR, "bessel_fit.pdf"), bbox_inches="tight")
+    print("\nSaved bessel_fit.(png|pdf) in reproduced_plots/")
     plt.show()
 
 

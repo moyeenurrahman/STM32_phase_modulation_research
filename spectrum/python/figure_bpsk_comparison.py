@@ -23,10 +23,13 @@ that conclusion for phase-domain ramping at these settings.
 Requires analyse_spectrum.py and the same CSV files in the same folder.
 """
 
+import os
+
 import numpy as np
 import matplotlib.pyplot as plt
 
 from analyse_spectrum import (
+    OUT_DIR,
     collect_case, CASES, to_db, find_null, lobe_power,
     FC, RS, N_HARMONICS,
 )
@@ -105,9 +108,9 @@ def main():
         y=1.02,
     )
     plt.tight_layout()
-    plt.savefig("FIG_7_14_bpsk_comparison.png", dpi=300, bbox_inches="tight")
-    plt.savefig("FIG_7_14_bpsk_comparison.pdf", bbox_inches="tight")
-    print("\nSaved FIG_7_14_bpsk_comparison.(png|pdf)")
+    plt.savefig(os.path.join(OUT_DIR, "bpsk_comparison.png"), dpi=300, bbox_inches="tight")
+    plt.savefig(os.path.join(OUT_DIR, "bpsk_comparison.pdf"), bbox_inches="tight")
+    print("\nSaved bpsk_comparison.(png|pdf) in reproduced_plots/")
     plt.show()
 
 
