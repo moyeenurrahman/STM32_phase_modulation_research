@@ -1,0 +1,10 @@
+# Python dependencies for the research analysis scripts.
+# Recommended environment: Python 3.10 or newer.
+# The version ranges below are compatibility targets, not a tested lockfile.
+#
+# Install from the repository root with:
+#   python -m pip install -r requirements.txt
+
+numpy>=2.0,<3.0
+scipy>=1.13.1,<2.0
+matplotlib>=3.9,<4.0

@@ -1,0 +1,61 @@
+# Python bytecode and local caches
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.coverage
+htmlcov/
+
+# Local Python environments and packaging artifacts
+.venv/
+venv/
+env/
+ENV/
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Generated analysis scratch directories
+# Existing curated results remain in result_plots/.
+**/work/
+**/reproduced_plots/
+**/figures/
+
+# STM32CubeIDE / Arm toolchain build output
+**/Debug/
+**/Release/
+**/cmake-build-*/
+*.o
+*.obj
+*.d
+*.elf
+*.hex
+*.bin
+*.map
+*.lst
+*.su
+*.gcda
+*.gcno
+
+# Editor and OS clutter
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local temporary files
+*.tmp
+*.temp
+*.bak
+
+# IMPORTANT: Do not ignore source .c/.h, CubeMX .ioc, measurements,
+# or curated research artifacts. Raw CSV, screenshots, result_plots/,
+# hardware_setup/, and Thesis_book.pdf should remain versioned.
