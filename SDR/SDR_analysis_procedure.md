@@ -1,6 +1,6 @@
 # SDR Extension: Analysis and Reproduction Guide
 
-Part of the thesis *"Implementation and Performance Analysis of a Baseband Phase Modulation (PM) System with STM32 for Low-Power Wireless Communication"* (BSc EEE, RUET). This folder holds the work of **Chapter 8 (Software-Defined Radio extension)**.
+Part of the thesis *"Implementation and Performance Analysis of a Baseband Phase Modulation (PM) System with STM32 for Low-Power Wireless Communication"* (BSc EEE, RUET). This folder holds the work of **Chapter 6 (Software-Defined Radio extension)**.
 
 This guide explains three things:
 

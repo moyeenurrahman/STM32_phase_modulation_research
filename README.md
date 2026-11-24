@@ -10,7 +10,7 @@ Firmware, raw oscilloscope data, Python analysis scripts and result plots for th
 >
 > 📄 **Full thesis:** [`Thesis_book.pdf`](Thesis_book.pdf)
 
-Every number in the thesis can be traced to a CSV file and a script in this repository. Each measurement folder has its own step-by-step guide, so the results can be **reproduced without any hardware**.
+The repository provides the available raw experimental measurements, STM32 firmware, Python analysis scripts, result plots, and documented calculation procedures supporting the thesis. Most oscilloscope-based analyses can be reproduced from the provided CSV files without the original hardware. Each measurement folder has its own step-by-step guide, so the results can be **reproduced without any hardware**.
 
 ---
 
@@ -40,7 +40,7 @@ Changing the modulation (pure carrier, analog PM, BPSK, QPSK) is a **firmware ch
 | BPSK symbol rate | 500 bit/s |
 | Buffer | 1000 samples (10 ms), an exact number of carrier, message and symbol periods |
 | DAC amplitude | 2048 ± 1200 codes |
-| Reconstruction filter | Unity-gain Sallen-Key Butterworth, R = 5.6 kΩ, C1 = 2 nF, C2 = 1 nF, f_c ≈ 20.1 kHz, MCP6002 at 4.05 V |
+| Reconstruction filter | Unity-gain Sallen-Key Butterworth, R = 5.6 kΩ, C1 = 2.2 nF, C2 = 1 nF, f_c ≈ 20.1 kHz, MCP6002 at 4.05 V |
 | Main instrument | Tektronix TBS1102C (8-bit, 2000-point records) |
 | Analysis | Python 3 (NumPy, SciPy, Matplotlib): FFT, Hilbert transform, sine fitting, statistics |
 
