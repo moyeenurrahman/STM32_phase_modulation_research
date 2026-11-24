@@ -110,7 +110,7 @@
 
 /* =========================================================== */
 /* ===== THE ONLY LINE YOU CHANGE BETWEEN BUILDS ============== */
-#define SPEC_MODE   MODE_CARRIER
+#define SPEC_MODE   MODE_BPSK_ABRUPT
 /* =========================================================== */
 
 /* ---------- fixed system parameters ---------- */
