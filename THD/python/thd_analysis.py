@@ -12,12 +12,20 @@
  Written for 2000-point oscilloscope records, NOT for the 262144-point
  records assumed in the original methodology document.
 
- Usage
- -----
-   1. Put every CSV in one folder.
-   2. Set DATA_DIR below.
-   3. Check that the file patterns in CASES match your filenames.
-   4. python thd_analysis.py
+ Usage (repo layout)
+ -------------------
+   1. Open a terminal in THD/python/ .
+   2. python thd_analysis.py
+      DATA_DIR and the case patterns below already point at the repo CSV
+      folders: THD/csv/<case>/, THD/csv/fg.csv, and the two SNR folders that
+      THD reuses (SNR/csv/N2 as T3, SNR/csv/N3 as T4).
+   3. Results are written to the folder you run from (results_thd.csv and
+      figures/).  Compare results_thd.csv with THD/csv/results_thd.csv.
+
+   The five cases captured at 200 mV/div (T5A, T5B, T6A, T6B, T7) have
+   floor=None.  No floor capture exists at 200 mV/div (T9b was recorded at
+   500 mV/div), so those cases use only the local noise floor next to each
+   harmonic.
 
  Output
  ------
@@ -42,7 +50,7 @@ from scipy.signal.windows import blackmanharris
 # 1.  CONFIGURATION  --  edit this section only
 # =============================================================================
 
-DATA_DIR = "."                  # folder holding the CSV files
+DATA_DIR = "../csv"             # folder holding the THD CSV case folders (repo layout)
 FIG_DIR  = "figures"            # output folder for plots
 
 N_HARMONICS   = 7               # count harmonics 2..7
@@ -74,14 +82,14 @@ CASES = {
 
     "T9b": dict(pattern="T9b/*.csv", f0=1000.0, codes=None, point="B",
                 floor=None, lpf_corr=False, kind="floor",
-                note="system floor, 200 mV/div, 4 ms/div"),
+                note="system floor, 500 mV/div, 4 ms/div (3 files)"),
 
     "T9c": dict(pattern="T9c/*.csv", f0=5000.0, codes=None, point="B",
                 floor=None, lpf_corr=False, kind="floor",
                 note="system floor, 500 mV/div, 400 us/div, from SNR N1"),
 
     # ---- instrument distortion check ---------------------------------------
-    "FG":  dict(pattern="FG/*.csv", f0=1000.0, codes=None, point="-",
+    "FG":  dict(pattern="fg.csv", f0=1000.0, codes=None, point="-",
                 floor="T9a", lpf_corr=False, kind="signal",
                 note="function generator direct into scope, 1.93 Vpp"),
 
@@ -96,13 +104,13 @@ CASES = {
 
     # ---- amplitude sweep, Point B ------------------------------------------
     "T5B": dict(pattern="T5B/*.csv", f0=1000.0, codes=500, point="B",
-                floor="T9b", lpf_corr=False, kind="signal", note="sweep"),
+                floor=None, lpf_corr=False, kind="signal", note="sweep"),
 
     "T6B": dict(pattern="T6B/*.csv", f0=1000.0, codes=800, point="B",
-                floor="T9b", lpf_corr=False, kind="signal", note="sweep"),
+                floor=None, lpf_corr=False, kind="signal", note="sweep"),
 
     "T7":  dict(pattern="T7/*.csv", f0=1000.0, codes=1000, point="B",
-                floor="T9b", lpf_corr=False, kind="signal",
+                floor=None, lpf_corr=False, kind="signal",
                 note="sweep - CHECK Vpp, 200 mV/div may have clipped"),
 
     "T8B": dict(pattern="T8B/*.csv", f0=1000.0, codes=1500, point="B",
@@ -111,21 +119,21 @@ CASES = {
 
     # ---- amplitude sweep, Point A ------------------------------------------
     "T5A": dict(pattern="T5A/*.csv", f0=1000.0, codes=500, point="A",
-                floor="T9b", lpf_corr=False, kind="signal", note="sweep"),
+                floor=None, lpf_corr=False, kind="signal", note="sweep"),
 
     "T6A": dict(pattern="T6A/*.csv", f0=1000.0, codes=800, point="A",
-                floor="T9b", lpf_corr=False, kind="signal", note="sweep"),
+                floor=None, lpf_corr=False, kind="signal", note="sweep"),
 
     "T8A": dict(pattern="T8A/*.csv", f0=1000.0, codes=1500, point="A",
                 floor="T9a", lpf_corr=False, kind="signal",
                 note="clean at Point A - proves the op-amp is the cause"),
 
     # ---- 5 kHz operating point (reused from SNR N2 / N3) --------------------
-    "T3":  dict(pattern="T3/*.csv", f0=5000.0, codes=1200, point="A",
+    "T3":  dict(pattern="../../SNR/csv/N2/*.csv", f0=5000.0, codes=1200, point="A",
                 floor="T9c", lpf_corr=False, kind="signal",
                 note="operating point, raw, reused from SNR N2"),
 
-    "T4":  dict(pattern="T4/*.csv", f0=5000.0, codes=1200, point="B",
+    "T4":  dict(pattern="../../SNR/csv/N3/*.csv", f0=5000.0, codes=1200, point="B",
                 floor="T9c", lpf_corr=True, kind="signal",
                 note="operating point, filter corrected, reused from SNR N3"),
 }

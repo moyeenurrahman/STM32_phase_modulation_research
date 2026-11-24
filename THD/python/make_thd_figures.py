@@ -280,13 +280,15 @@ def figure5():
     # ---- the instrument floor ---------------------------------------------
     if floor_db is not None:
         ax.axhline(floor_db, ls="--", lw=1.5, color="0.25")
-        # shade only the strip between the floor and the top of the axes
-        ax.axhspan(floor_db, hi, color="0.5", alpha=0.10, zorder=0)
-        ax.text(0.985, floor_db + 0.35,
+        # shade the region BELOW the floor: a THD figure lower (better) than
+        # the instrument's own distortion cannot be resolved, it is only an
+        # upper bound.  Values above the line (worse) are real.
+        ax.axhspan(lo, floor_db, color="0.5", alpha=0.10, zorder=0)
+        ax.text(0.985, floor_db - 0.35,
                 f"instrument floor  {floor_db:.1f} dB "
-                f"(shaded: not resolvable)",
+                f"(shaded: below this, only upper bounds)",
                 transform=ax.get_yaxis_transform(),
-                ha="right", va="bottom", fontsize=8.5, color="0.25")
+                ha="right", va="top", fontsize=8.5, color="0.25")
     else:
         print("  note: no function generator capture, floor line omitted.")
 
