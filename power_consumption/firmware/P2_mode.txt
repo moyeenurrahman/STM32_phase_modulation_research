@@ -19,7 +19,7 @@
   *            PCLK1        : 36 MHz   (APB1 timer clocks = 72 MHz)
   *            PCLK2        : 72 MHz
   *            Flash latency: 2 wait states
-  *            CPU state    : Sleep, via __WFI()
+  *            CPU state    : busy loop
   *
   *            TIMER CONFIGURATION (set in CubeMX, not here)
   *            --------------------------------------------

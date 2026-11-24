@@ -187,7 +187,7 @@ int main(void)
          * The DMA half-transfer and transfer-complete interrupts remain
          * enabled, so the core wakes 50 times per second for each, plus
          * once per millisecond for SysTick. Each wake lasts a few
-         * microseconds. SysTick behaviour is identical in M0, M2 and M3,
+         * microseconds. SysTick behaviour is identical in P0, P2 and P3,
          * so it cancels in every comparison.
          */
         __WFI();

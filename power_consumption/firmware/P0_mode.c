@@ -9,7 +9,7 @@
   *
   *            PURPOSE
   *            -------
-  *            M0 establishes the static power floor of the microcontroller:
+  *            P0 establishes the static power floor of the microcontroller:
   *            a powered and clocked STM32F303RE with NO signal generation.
   *            All other power results are interpreted relative to this value.
   *

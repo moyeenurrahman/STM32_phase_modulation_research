@@ -2,19 +2,19 @@
 /**
   ******************************************************************************
   * @file    : main.c
-  * @brief   : Mode M3 - PM active, waveform recomputed at run time
+  * @brief   : Mode P3 - PM active, waveform recomputed at run time
   *
   *            Thesis: Implementation and Performance Analysis of a Baseband
   *            Phase Modulation (PM) System with STM32
   *
   *            PURPOSE
   *            -------
-  *            M3 produces exactly the same output waveform as M1, but the
+  *            P3 produces exactly the same output waveform as P1, but the
   *            samples are recomputed continuously at run time inside the DMA
   *            half-transfer and transfer-complete callbacks instead of being
   *            precomputed once at startup.
   *
-  *            The difference M3 - M1 quantifies the cost of real-time
+  *            The difference P3 - P1 quantifies the cost of real-time
   *            floating-point waveform generation, and therefore justifies
   *            the design decision to use a precomputed buffer with circular
   *            DMA.
