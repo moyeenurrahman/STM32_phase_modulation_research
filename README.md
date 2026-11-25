@@ -4,7 +4,7 @@ Firmware, raw oscilloscope data, Python analysis scripts and result plots for th
 
 > **Implementation and Performance Analysis of a Baseband Phase Modulation System with STM32 for Low-Power Wireless Communication**
 >
-> Mohammad Moyeenur Rahman (Roll 2001144) and A S M Redoun Alam (Roll 2001174)<br>
+> Mohammad Moyeenur Rahman (Roll 2001144)<br>
 > Supervisor: Prof. Dr. Md. Masud Rana<br>
 > Department of Electrical & Electronic Engineering, Rajshahi University of Engineering & Technology (RUET), Bangladesh, August 2026
 >
@@ -190,7 +190,7 @@ To regenerate the signals on hardware, you need a Nucleo-F303RE, STM32CubeIDE, t
 If you use this data or code, please cite the thesis:
 
 ```
-M. M. Rahman and A. S. M. R. Alam, "Implementation and Performance Analysis of a Baseband
+M. M. Rahman, "Implementation and Performance Analysis of a Baseband
 Phase Modulation System with STM32 for Low-Power Wireless Communication," B.Sc. thesis,
 Dept. of Electrical & Electronic Engineering, Rajshahi University of Engineering & Technology
 (RUET), Rajshahi, Bangladesh, Aug. 2026.
